@@ -1,3 +1,21 @@
 body {
-	margin: clamp(8px, 5vw, 10vh) clamp(8px, 5vw, 10vw);
+	margin: clamp(5px, 4vw, 9vh) clamp(8px, 5vw, 10vw);
+}
+
+h1 {
+	margin: 5px 5px;
+	padding: 10px 10px;
+	width: 50vw;
+}
+
+.scoreBoard {
+	margin: 0;
+	text-align: right;
+	padding: 10px 50px;
+	width: 50vw;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
 }

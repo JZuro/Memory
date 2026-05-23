@@ -1,37 +1,18 @@
 import "./styles/Card.css";
-import { useEffect, useState } from "react";
 
-async function getData(
-	pokemon: string,
-): Promise<{ name: string; imgurl: string }> {
-	const response = await fetch(
-		"https://pokeapi.co/api/v2/pokemon/" + pokemon + "/",
-	);
-	if (!response.ok) {
-		throw new Error(`${response.status}`);
-	}
-	const data = await response.json();
-	return {
-		name: data.name[0].toUpperCase() + data.name.slice(1),
-		imgurl: data.sprites["other"]["official-artwork"]["front_default"],
-	};
-}
+type Pokemon = { id: string; name: string; imgurl: string };
 
-export default function Card({ pokemonName }: { pokemonName: string }) {
-	const [pokemon, setPokemon] = useState<{ name: string; imgurl: string }>();
-
-	useEffect(() => {
-		getData(pokemonName)
-			.then(setPokemon)
-			.catch((error) => {
-				console.error(error);
-			});
-	}, [pokemonName]);
-
+export default function Card({
+	pokemon,
+	handleClick,
+}: {
+	pokemon: Pokemon;
+	handleClick: (id: string) => void;
+}) {
 	return (
-		<div className="card">
-			<img src={pokemon?.imgurl} />
-			<h3>{pokemon?.name}</h3>
+		<div className="card" onClick={() => handleClick(pokemon.id)}>
+			<img src={pokemon.imgurl} />
+			<h3>{pokemon.name}</h3>
 		</div>
 	);
 }

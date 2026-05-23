@@ -8,8 +8,15 @@
 	padding: clamp(10px, 3vw, 20px);
 }
 
+h1 {
+	font-family:
+		"Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+	text-align: center;
+}
+
 @media (min-width: 600px) {
 	#display {
 		grid-template-columns: repeat(5, 1fr);
 	}
 }
+
