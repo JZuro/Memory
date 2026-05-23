@@ -1,0 +1,3 @@
+body {
+	margin: clamp(8px, 5vw, 10vh) clamp(8px, 5vw, 10vw);
+}

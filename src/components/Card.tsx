@@ -29,9 +29,9 @@ export default function Card({ pokemonName }: { pokemonName: string }) {
 	}, [pokemonName]);
 
 	return (
-		<>
+		<div className="card">
 			<img src={pokemon?.imgurl} />
 			<h3>{pokemon?.name}</h3>
-		</>
+		</div>
 	);
 }

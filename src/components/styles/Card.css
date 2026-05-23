@@ -1,0 +1,29 @@
+.card {
+	display: flex;
+	flex-direction: column;
+    justify-content: space-evenly;
+	align-items: center;
+	border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.213);
+    padding: clamp(4px, 1.5vw, 10px);
+    transition: all 50ms;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    min-height: 50px;
+}
+
+.card h3 {
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-size: clamp(0.7rem, 2vw, 1rem);
+    margin: 4px 0 0;
+    text-align: center;
+}
+
+.card:hover {
+	background-color: rgb(188, 211, 226);
+}
+

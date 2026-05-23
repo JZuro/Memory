@@ -1,4 +1,15 @@
 #display {
-    background-color: white;
-    color: black
+	background-color: white;
+	color: black;
+
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: clamp(8px, 2vw, 15px);
+	padding: clamp(10px, 3vw, 20px);
+}
+
+@media (min-width: 600px) {
+	#display {
+		grid-template-columns: repeat(5, 1fr);
+	}
 }
