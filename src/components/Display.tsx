@@ -1,13 +1,11 @@
 import './styles/Display.css';
+import type { ReactNode } from 'react';
 
-
-
-export default function Display({ component: Component }: { component: React.ComponentType }) 
-{
+export default function Display({ children }: { children: ReactNode }) {
     return (
         <div>
             <div id="display">
-                <Component />
+                {children}
             </div>
         </div>
     );

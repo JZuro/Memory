@@ -1,31 +1,37 @@
 import "./styles/Card.css";
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
-async function getData(pokemon: string): Promise<string> {
+async function getData(
+	pokemon: string,
+): Promise<{ name: string; imgurl: string }> {
 	const response = await fetch(
-		"https://pokeapi.co/api/v2/pokemon/" + pokemon + "/"
+		"https://pokeapi.co/api/v2/pokemon/" + pokemon + "/",
 	);
 	if (!response.ok) {
-		throw new Error(`HTTP error! Status: ${response.status}`);
+		throw new Error(`${response.status}`);
 	}
 	const data = await response.json();
-	return data.sprites.front_default;
+	return {
+		name: data.name[0].toUpperCase() + data.name.slice(1),
+		imgurl: data.sprites["other"]["official-artwork"]["front_default"],
+	};
 }
 
-export default function Card() {
-	const [pokemon, setPokemon] = useState<string | null>(null);
+export default function Card({ pokemonName }: { pokemonName: string }) {
+	const [pokemon, setPokemon] = useState<{ name: string; imgurl: string }>();
 
 	useEffect(() => {
-		getData("pikachu")
+		getData(pokemonName)
 			.then(setPokemon)
 			.catch((error) => {
 				console.error(error);
 			});
-	}, []);
+	}, [pokemonName]);
 
 	return (
 		<>
-			{pokemon && <img src={pokemon} />}
+			<img src={pokemon?.imgurl} />
+			<h3>{pokemon?.name}</h3>
 		</>
 	);
 }
